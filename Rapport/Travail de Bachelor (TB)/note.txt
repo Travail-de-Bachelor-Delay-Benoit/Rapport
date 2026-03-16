@@ -1,0 +1,10 @@
+Reunion Kickoff 20 February 2026:
+
+- Porter Nanostack hors de l'ecosystéme Embedos
+- D'abord avoir un truc un peu standalone sur zephyr
+- Puis l'integrer dans l'api network de zephyr
+- Target: carte stm32
+
+
+HAL: Hardware abstraction Layer
+SAL: Software Abstraction Layer
