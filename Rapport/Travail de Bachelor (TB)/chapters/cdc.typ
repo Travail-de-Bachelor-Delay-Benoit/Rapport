@@ -1,18 +1,21 @@
+#import "@preview/oxdraw:0.1.0" : *
+
 = Cahier des charges <cahier-des-charges>
 == Résumé du problème <résumé-du-problème>
 
 
-// TODO A FAIRE A VOIR A MODIFIER
-
 Avec le developement des villes connectées (Smart City) il est devenu indispensable de pouvoir créer des reseaux qui puissent connecter tous ces nouveaux appareils. Pour répondre aux besoins strictes de ce style d'application (beaucoup de device, de longue portée, d'obstacle urbain)
 
-Zephyr est un RTOS sortit en 2016. Son domaine d'usage est les petits systémes embarqué a faible ressource est connecté. Il est fournit avec plusieurs API de communication et prends en charge plusieurs architecture 32 et 64 bits. 
+Zephyr est un RTOS sortit en 2016. Son domaine d'usage est les petits systémes embarqué a faible ressource et connecté. Il est fournit avec plusieurs API de communication et prends en charge plusieurs architecture 32 et 64 bits. 
 
-La Nanostack est une pile de communication Open Source qui intégre le protocole WiSun. Elle est developée pour le RTOS Mbed os qui n'est plus maintenu depuis INSERER DATA ICI.
+La Nanostack est une pile de communication Open Source qui intégre le protocole WiSun. Elle est developée pour le RTOS Mbed os qui n'est plus maintenu depuis 2024.
 
 === Problématique <problématique>
 // TODO A FAIRE A REVOIR A MODIFIER
-Embed OS n'étant plus supporter il est nécessaire de porter la Nanostack sur un nouvel OS, en l'occurence ici Zephyr 
+Embed OS n'étant plus supporté, il a été decidé de porter la Nanostack sur Zephyr. Il s'agit donc de porter la partie hardware de la Nanostack afin de l'intégrer dans l'écosystéme Zephyr. Dans un premier temps il faut la faire fonctionner en standalone puis dans un second temps il faut l'intégrer a l'écosystéme Zephyr et pouvoir le faire fonctionner depuis des socket BSD.
+
+// Rendu du diagramme depuis le fichier externe
+
 
 == Phase du projet
 
@@ -62,3 +65,7 @@ Embed OS n'étant plus supporter il est nécessaire de porter la Nanostack sur u
 === Livrables <livrables>
 
 Les délivrables seront les suivants :
+- Le rapport complet 
+- Un repo Github contenant le portage de la Nanostack
+- Un repo Github contenant un code d'exemple
+2

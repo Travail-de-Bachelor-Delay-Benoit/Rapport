@@ -1,2 +1,2 @@
 = Introduction <introduction>
-Le standart WiSun est
+Le standard WiSun est un standard

@@ -73,3 +73,9 @@
   [*#total_heures h*], 
   [*100%*]
 )
+== Diagrame de gantt initiale <diagramme-gantt-initiale>
+
+#figure(
+  image("../image/gantt_initiale.svg"),
+  caption: "Planification Initiale"
+)

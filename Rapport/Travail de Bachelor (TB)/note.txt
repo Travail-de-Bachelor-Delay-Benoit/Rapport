@@ -8,3 +8,8 @@ Reunion Kickoff 20 February 2026:
 
 HAL: Hardware abstraction Layer
 SAL: Software Abstraction Layer
+
+
+Board a commander :
+
+https://docs.zephyrproject.org/latest/boards/espressif/esp32c5_devkitc/doc/index.html
