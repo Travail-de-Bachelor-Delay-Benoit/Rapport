@@ -19,10 +19,10 @@
 */
 #import "template/_title.typ": *
 #_title(TBtitle, TBsubtitle, TBacademicYears, TBdpt, TBfiliere, TBorient, TBauthor, TBfeminineForm, TBsupervisor, TBsupervisorFeminineForm, confidential)
-#import "template/_second_title.typ": *
+//#import "template/_second_title.typ": *
 #_second_title(TBtitle, TBacademicYears, TBdpt, TBfiliere, TBorient, TBauthor, TBfeminineForm, TBsupervisor, TBsupervisorFeminineForm, TBresumePubliable)
-#include "template/_preambule.typ"
-#import "template/_authentification.typ": *
+//#include "template/_preambule.typ"
+//#import "template/_authentification.typ": *
 #_authentification(TBauthor, TBfeminineForm)
 
 // Set numbering for content
