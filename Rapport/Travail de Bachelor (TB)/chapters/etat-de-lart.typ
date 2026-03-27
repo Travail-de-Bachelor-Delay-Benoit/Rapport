@@ -29,4 +29,33 @@ Le noyau de Zephyr offre divers fonctionnalité pour permettre a l'utilisateur d
 - Système d'événements
 - Gestion de la mémoire
 
-=== Historique
+
+// TODO a refaire je pense que c'est pas assez précis
+Il s'occupe aussi de la gestion des driver. Le modele de driver Zephyr ressemble au modele Linux en ayant des driver générique par type d'interface qui doivent être écrit ensuite
+
+=== Gestion de l'énergie
+
+=== Connectivité et protocole
+
+== Nanostack
+
+La Nanostack est une pile de communication developé sur Mbed qui intégre plusieurs protocole de communication. Comme Mbed os est en fin de vie il est nécessaire de porter la pile sur un nouvel os.
+
+Pour cela il faut bien comprendre le fonctionnement de la Nanostack, son système d'evenement.
+
+La Nanostack est composé de 3 parties.
+
+- Le SAL
+- Le HAL 
+- L'event Loop
+
+=== SAL (Socket Abstraction Layer)
+
+La SAL gère toute la partie purement logicielle de la Nanostack, totalement indépendante du matériel (qui est délégué à la couche matérielle, la HAL). Son rôle principal est de masquer la complexité du réseau en offrant une interface de programmation standardisée (API Socket) à l'application. 
+
+C'est dans cette couche que s'exécutent les machines d'état des différents protocoles (MAC, 6LoWPAN, routage RPL, IPv6, TCP/UDP). Pour fonctionner efficacement sur des microcontrôleurs limités, la SAL s'appuie sur deux piliers :
+
+- *Le Nanostack Event Loop :* Un ordonnanceur d'événements coopératif qui gère le trafic réseau de façon asynchrone pour économiser la RAM, sans nécessiter de multiples _threads_.
+- *Une gestion interne de la mémoire dynamique* (`ns_dyn_mem`) *:* Un système d'allocation de _buffers_ réseau optimisé pour prévenir la fragmentation de la mémoire lors d'un trafic intense.
+
+Enfin, la SAL intègre nativement les mécanismes de sécurité (via Mbed TLS) pour chiffrer les communications avant leur transmission.
