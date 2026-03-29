@@ -1,1 +1,1 @@
-#bibliography("../bibliography.bib", style: "iso-690-author-date", full: true)
+#bibliography("../bibliography.bib", style: "ieee")

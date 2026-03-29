@@ -9,10 +9,10 @@
 
 #let confidential = false
 
-#let TBtitle = "Titre du TB"
+#let TBtitle = "Rapport Intermédiaire"
 #let TBsubtitle = "Portage de la pile de communication Nanostack (Wi-SUN) sur Zephyr RTOS
 "
-#let TByear = "2025"
+#let TByear = "2026"
 #let TBacademicYears = "2025-26"
 
 #let TBdpt = "Département des Technologie de l'information et de la communication (TIC)"

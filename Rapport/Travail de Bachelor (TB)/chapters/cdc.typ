@@ -1,25 +1,27 @@
 #import "@preview/oxdraw:0.1.0" : *
 
 = Cahier des charges <cahier-des-charges>
-== Résumé du problème <résumé-du-problème>
 
+== Résumé du contexte <resume-du-contexte>
 
-Avec le developement des villes connectées (Smart City) il est devenu indispensable de pouvoir créer des reseaux qui puissent connecter tous ces nouveaux appareils. Pour répondre aux besoins strictes de ce style d'application (beaucoup de device, de longue portée, d'obstacle urbain)
+L'essor des villes intelligentes (_Smart Cities_) rend indispensable le déploiement de réseaux capables d'interconnecter une multitude d'équipements. Ces applications imposent des contraintes réseau strictes : une densité élevée d'appareils, une couverture longue portée et une forte résilience face aux obstacles urbains. 
 
-Zephyr est un RTOS sortit en 2016. Son domaine d'usage est les petits systémes embarqué a faible ressource et connecté. Il est fournit avec plusieurs API de communication et prends en charge plusieurs architecture 32 et 64 bits. 
+Pour répondre aux défis de l'IoT (Internet des Objets), *Zephyr* s'est imposé comme une référence. Ce système d'exploitation temps réel (RTOS), lancé en 2016, est spécialement conçu pour les petits systèmes embarqués connectés et à faibles ressources. Il offre une connectivité avancée, de multiples API de communication et prend en charge un large éventail d'architectures 32 et 64 bits.
 
-La Nanostack est une pile de communication Open Source qui intégre le protocole WiSun. Elle est developée pour le RTOS Mbed os qui n'est plus maintenu depuis 2024.
+De son côté, la *Nanostack* est une pile de communication open source reconnue pour son intégration robuste des réseaux maillés, notamment via le protocole Wi-SUN. Cependant, elle a été historiquement développée pour le système d'exploitation Mbed OS, dont la maintenance officielle a pris fin au profit d'autres solutions.
 
-=== Problématique <problématique>
-// TODO A FAIRE A REVOIR A MODIFIER
-Embed OS n'étant plus supporté, il a été decidé de porter la Nanostack sur Zephyr. Il s'agit donc de porter la partie hardware de la Nanostack afin de l'intégrer dans l'écosystéme Zephyr. Dans un premier temps il faut la faire fonctionner en standalone puis dans un second temps il faut l'intégrer a l'écosystéme Zephyr et pouvoir le faire fonctionner depuis des socket BSD.
+=== Problématique <problematique>
 
-// Rendu du diagramme depuis le fichier externe
+Mbed OS n'étant plus supporté, le projet consiste à porter la pile réseau Nanostack vers Zephyr RTOS afin de pérenniser son utilisation. L'enjeu technique principal réside dans l'adaptation de la couche d'abstraction matérielle (HAL) de la Nanostack pour qu'elle puisse interagir nativement avec l'écosystème et les pilotes matériels de Zephyr.
+
+Ce portage s'articulera autour de deux phases majeures :
+1. *Fonctionnement autonome (_Standalone_) :* Adapter et faire tourner le cœur de la Nanostack sur Zephyr de manière indépendante, en validant les interactions de bas niveau (radio, timers, gestion mémoire).
+2. *Intégration système(Optionel) :* Coupler intimement la Nanostack à la pile réseau native de Zephyr, afin qu'elle puisse être exploitée par les applications de haut niveau de manière totalement transparente, via l'API standard des _sockets_ BSD.
+
 
 
 == Phase du projet
 
-//A VOIR A CORRIGER
 + Prise en main de la base de code
     - Fork les sources de `mbed-os`
     - Fork les sources de `zephyr-os`
@@ -68,4 +70,3 @@ Les délivrables seront les suivants :
 - Le rapport complet 
 - Un repo Github contenant le portage de la Nanostack
 - Un repo Github contenant un code d'exemple
-2
