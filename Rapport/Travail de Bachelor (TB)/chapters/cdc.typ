@@ -29,7 +29,7 @@ Ce portage s'articulera autour de deux phases majeures :
     - Mise en évidence des différents dossier et leur utilisation
 
 + Prise en main de Zephyr OS
-    - Installation de la toolchain
+    - Installation devoid pr la toolchain
     - Compiler le kernel ainsi qu'un exemple sur qemu
     - Compiler le kernel ainsi qu'un exemple sur une cible
     - Ecrire un petit programme de test 

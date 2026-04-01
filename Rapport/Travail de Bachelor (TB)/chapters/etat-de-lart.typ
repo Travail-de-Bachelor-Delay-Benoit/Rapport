@@ -8,7 +8,7 @@ Pour garantir une communication fiable en s'affranchissant des problèmes de pro
 
 == Mbed OS <mbedos>
 
-Mbed OS est un système d'exploitation temps réel (RTOS) destiné aux systèmes embarqués. Il repose sur CMSIS-RTOS, une couche d'abstraction fournie par Arm, qui permet aux développeurs de dialoguer avec le processeur de manière uniforme, indépendamment du fabricant du matériel. Il intègre un noyau temps réel performant ainsi qu'une gestion complète du _multithreading_.
+Mbed OS est un système d'exploitation temps réel (RTOS) destiné aux systèmes embarqués. Il repose sur CMSIS-RTOS@CMSISRTOSHandbook, une couche d'abstraction fournie par Arm, qui permet aux développeurs de dialoguer avec le processeur de manière uniforme, indépendamment du fabricant du matériel. Il intègre un noyau temps réel performant ainsi qu'une gestion complète du _multithreading_.
 
 Particulièrement populaire dans l'écosystème de l'IoT, Mbed OS embarque nativement un grand nombre de modules de connectivité. Il fournit des implémentations de haut niveau pour de nombreux protocoles de communication, tout en supportant un vaste catalogue de cartes de développement et de pilotes (_drivers_).
 
@@ -18,7 +18,7 @@ C'est au sein de cet écosystème qu'a été développée la Nanostack, une pile
 
 Zephyr est un système d'exploitation open source soutenu par la Linux Foundation, dont la version 1.0 a été publiée le 17 février 2016. Il est spécifiquement conçu pour les systèmes embarqués aux ressources limitées répondant à des contraintes temps réel. S'inspirant fortement de Linux, il en reprend des concepts standards tels que le DeviceTree et Kconfig.
 
-C'est un OS extrêmement modulaire qui prend en charge un vaste panel d'architectures matérielles. Pour simplifier le flux de travail, il s'appuie sur son propre outil en ligne de commande, `west`. Ce dernier permet de cross-compiler, de tester et de déployer aisément son code sur l'ensemble des plateformes compatibles.
+C'est un OS extrêmement modulaire qui prend en charge un vaste panel d'architectures matérielles. Pour simplifier le flux de travail, il s'appuie sur son propre outil en ligne de commande, `west`@WestZephyrsMetatool. Ce dernier permet de cross-compiler, de tester et de déployer aisément son code sur l'ensemble des plateformes compatibles.
 
 === Gestion de l'énergie
 
@@ -26,14 +26,14 @@ L'un des objectifs premiers du standard Wi-SUN étant de minimiser la consommati
 
 ==== Gestion globale du système (_System Power Management_)
 
-La gestion de la consommation énergétique au niveau du processeur (CPU) s'articule autour de deux politiques de mise en veille principales :
+La gestion de la consommation énergétique au niveau du processeur (CPU) s'articule autour de deux politiques de mise en veille principales@SystemPowerManagement :
 
 - *Politique basée sur la résidence (_Residency-based_) :* C'est l'approche automatisée par défaut. Le noyau calcule le temps d'inactivité prévu avant la prochaine tâche planifiée. Il sélectionne ensuite automatiquement l'état de veille le plus profond possible, à condition que le temps d'inactivité soit supérieur au temps de résidence (le seuil de rentabilité énergétique de cet état). Les différents états de veille supportés par le matériel et leurs caractéristiques temporelles sont définis de manière statique dans le _DeviceTree_ à l'aide des _bindings_ `zephyr,power-state`.
 - *Politique définie par l'application (_Application-defined_) :* Dans cette configuration, le noyau délègue la prise de décision. C'est au développeur d'implémenter sa propre logique métier pour basculer manuellement le CPU dans les modes d'économie d'énergie adéquats, offrant ainsi un contrôle total basé sur les événements et le comportement spécifique de l'application.
 
 ==== Gestion de l'alimentation des périphériques (_Device Power Management_)
 
-Le _Device Power Management_ confie la gestion de la consommation énergétique directement aux pilotes (_drivers_) des périphériques. Zephyr propose deux méthodes distinctes pour contrôler l'état d'alimentation de ces composants matériels :
+Le _Device Power Management_ confie la gestion de la consommation énergétique directement aux pilotes (_drivers_) des périphériques. Zephyr propose deux méthodes distinctes pour contrôler l'état d'alimentation de ces composants matériels@DevicePowerManagement :
 
 - *Gestion dynamique (_Device Runtime Power Management_) :* Dans ce modèle asynchrone, l'état d'alimentation d'un périphérique est géré de manière autonome en fonction de son utilisation réelle. Les pilotes peuvent adapter leur consommation, mais ils peuvent également être contrôlés explicitement par les applications de haut niveau ou les autres sous-systèmes de Zephyr via des API dédiées, permettant un réveil "à la demande".
 - *Gestion centralisée par le système (_System-Managed Device Power Management_) :* Dans ce mode, le noyau coordonne la mise en veille des périphériques en synchronisation avec celle du processeur (CPU). Lorsqu'une transition vers un état de basse consommation global est décidée, le système se charge de suspendre automatiquement tous les périphériques inactifs. Cette suspension s'effectue strictement dans l'ordre inverse de leur initialisation, afin de préserver les dépendances matérielles et de garantir la stabilité du système.
@@ -74,8 +74,6 @@ C'est dans cette couche que s'exécutent les machines d'état des différents pr
 - *Une gestion interne du temps et de la mémoire* (`ns_timer` et `ns_dyn_mem`) *:* Un système de minuteurs virtuels pour les _timeouts_ réseau et un allocateur de _buffers_ optimisé pour prévenir la fragmentation de la mémoire lors d'un trafic intense.
 
 Enfin, la SAL intègre nativement les mécanismes de sécurité (via Mbed TLS) pour chiffrer les communications avant leur transmission. Il est important de noter que bien que Mbed OS ait atteint sa fin de vie, le projet Mbed TLS demeure activement maintenu par la communauté TrustedFirmware @ImportantUpdateMbed2024. Son intégration reste donc pertinente et pérenne pour ce projet, nous dispensant de chercher une solution cryptographique alternative.
-
-*Enjeux pour le portage :* L'indépendance de la SAL vis-à-vis du matériel est un atout majeur pour la migration vers Zephyr. La logique complexe des protocoles (notamment Wi-SUN) n'a pas besoin d'être réécrite. Le défi consistera principalement à concevoir des adaptateurs pour lier l'Event Loop et les _timers_ de la SAL aux primitives du noyau temps réel de Zephyr.
 
 === HAL (Hardware Abstraction Layer)
 

@@ -28,9 +28,6 @@ table(
 
   [*Mbed TLS*], 
   [Bibliothèque de cryptographie autonome (anciennement liée à Mbed OS) fournissant les mécanismes de sécurité comme TLS et DTLS pour chiffrer les communications.],
-
-  [*TRNG*], 
-  [*True Random Number Generator* : Générateur de nombres aléatoires matériel, indispensable à Mbed TLS pour créer des clés de chiffrement robustes.]
   
 ),
 caption: [Glossaire des termes techniques]
@@ -40,11 +37,11 @@ L'émergence des Smart Cities transforme radicalement la gestion des infrastruct
  
 // TODO AJOUTER LA DOCUMENTATION https://fr.digi.com/solutions/by-technology/wi-sun#wi-sun-protocol
 
-Pour répondre à ces problématiques, le standard Wi-SUN a été créé en janvier 2012. Il s'appuie sur une couche physique sub-GHz (norme IEEE 802.15.4g), offrant une meilleure propagation radio en milieu urbain dense et une grande résilience face aux obstacles physiques. Ce réseau maillé permet d'interconnecter des millions d'appareils grâce à l'adressage IPv6 et au protocole de routage RPL (Routing Protocol for Low-power and Lossy Networks). Au-delà de ses capacités d'auto-découverte et d'auto-réparation, il garantit la sécurité du réseau via le standard IEEE 802.1X, qui assure l'authentification de chaque nœud. Enfin, la Wi-SUN Alliance encadre l'interopérabilité entre les constructeurs, garantissant ainsi l'homogénéité et la pérennité des déploiements.
+Pour répondre à ces problématiques, le standard Wi-SUN a été créé en janvier 2012. Il s'appuie sur une couche physique sub-GHz (norme IEEE 802.15.4g), offrant une meilleure propagation radio en milieu urbain dense et une grande résilience face aux obstacles physiques. Ce réseau maillé permet d'interconnecter des millions d'appareils grâce à l'adressage IPv6 et au protocole de routage RPL (Routing Protocol for Low-power and Lossy Networks)@WiSUNReseauxSans. Au-delà de ses capacités d'auto-découverte et d'auto-réparation, il garantit la sécurité du réseau via le standard IEEE 802.1X@WiSUNFANSecurity, qui assure l'authentification de chaque nœud. Enfin, la Wi-SUN Alliance encadre l'interopérabilité entre les constructeurs, garantissant ainsi l'homogénéité et la pérennité des déploiements.
 
 Zephyr est un RTOS en plein essor, soutenu par la Linux Foundation depuis sa première publication en février 2016 @ZephyrAnnounce. Il est conçu pour des appareils et des systèmes présentant de fortes contraintes mémoire. Son architecture repose sur un unique espace d'adressage ainsi qu'une gestion statique de la mémoire. Il reprend des concepts essentiels à Linux, tels que le DeviceTree et Kconfig, ce qui le rend hautement configurable et facilement adaptable à de nouvelles cibles matérielles. Néanmoins, à l'heure actuelle, il n'existe aucune implémentation open-source du standard Wi-SUN sur ce RTOS, malgré le fait qu'il intègre déjà nativement de nombreux protocoles réseau.
 
-Nanostack est une pile de communication open-source intégrant le standard Wi-SUN. Actuellement, elle est étroitement liée à l'écosystème Mbed OS, un système qui n'est plus maintenu depuis 2024. Ce travail de Bachelor a pour but de pallier cette obsolescence en portant la Nanostack vers Zephyr et en l'intégrant pleinement à son architecture. À terme, cette contribution permettra de déployer Zephyr dans un contexte de Smart Cities de manière entièrement open-source, tout en garantissant la pérennité de cette solution réseau.
+Nanostack est une pile de communication open-source intégrant le standard Wi-SUN. Actuellement, elle est étroitement liée à l'écosystème Mbed OS@MeshTutorialAPI, un système qui n'est plus maintenu depuis 2024@ImportantUpdateMbed. Ce travail de Bachelor a pour but de pallier cette obsolescence en portant la Nanostack vers Zephyr et en l'intégrant pleinement à son architecture. À terme, cette contribution permettra de déployer Zephyr dans un contexte de Smart Cities de manière entièrement open-source, tout en garantissant la pérennité de cette solution réseau.
 
 == Structure du document <structure-du-document>
 

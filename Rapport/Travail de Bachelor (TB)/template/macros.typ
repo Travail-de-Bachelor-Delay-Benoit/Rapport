@@ -43,3 +43,5 @@
   }
   return ""
 }
+
+// À mettre au début de ton fichier principal

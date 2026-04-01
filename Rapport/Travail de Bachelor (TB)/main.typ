@@ -14,6 +14,15 @@
 #import "template/style.typ": TBStyle
 #show: TBStyle.with(TBauthor, confidential)
 
+#let codeblock(body) = block(
+  fill: luma(245), 
+  stroke: luma(200), 
+  inset: 10pt, 
+  radius: 4pt, 
+  width: 100%, 
+  body
+)
+
 /*
  Title and template
 */
@@ -55,7 +64,7 @@
 
 //#include "chapters/implementation.typ"
 
-//#include "chapters/conclusion.typ"
+#include "chapters/conclusion.typ"
 
 // Remove numbering after content
 #set heading(numbering: none)
@@ -66,6 +75,7 @@
 #include "template/_bibliography.typ"
 #include "template/_figures.typ"
 #include "template/_tables.typ"
+#include "template/_listings.typ"
 
 /*
  Annexes
