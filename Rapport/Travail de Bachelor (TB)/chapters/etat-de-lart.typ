@@ -26,7 +26,7 @@ L'un des objectifs premiers du standard Wi-SUN étant de minimiser la consommati
 
 ==== Gestion globale du système (_System Power Management_)
 
-La gestion de la consommation énergétique au niveau du processeur (CPU) s'articule autour de deux politiques de mise en veille principales@SystemPowerManagement :
+La gestion de la consommation énergétique au niveau du processeur (CPU) tourne autour de deux politiques de mise en veille principales@SystemPowerManagement :
 
 - *Politique basée sur la résidence (_Residency-based_) :* C'est l'approche automatisée par défaut. Le noyau calcule le temps d'inactivité prévu avant la prochaine tâche planifiée. Il sélectionne ensuite automatiquement l'état de veille le plus profond possible, à condition que le temps d'inactivité soit supérieur au temps de résidence (le seuil de rentabilité énergétique de cet état). Les différents états de veille supportés par le matériel et leurs caractéristiques temporelles sont définis de manière statique dans le _DeviceTree_ à l'aide des _bindings_ `zephyr,power-state`.
 - *Politique définie par l'application (_Application-defined_) :* Dans cette configuration, le noyau délègue la prise de décision. C'est au développeur d'implémenter sa propre logique métier pour basculer manuellement le CPU dans les modes d'économie d'énergie adéquats, offrant ainsi un contrôle total basé sur les événements et le comportement spécifique de l'application.
@@ -42,7 +42,7 @@ Le _Device Power Management_ confie la gestion de la consommation énergétique 
 
 Pour répondre aux exigences de l'Internet des Objets, Zephyr embarque nativement une pile réseau complète, modulaire et hautement optimisée, appelée le _Net Subsystem_. Cette pile est conçue pour s'adapter aux architectures à faibles ressources tout en offrant des fonctionnalités dignes des systèmes d'exploitation majeurs.
 
-L'architecture réseau de Zephyr s'articule autour de plusieurs couches clés :
+L'architecture réseau de Zephyr fonctionne avec plusieurs couches clé :
 
 - *L'interface applicative (API) :* Zephyr expose une interface de programmation basée sur le standard POSIX (_BSD Sockets_). Ce choix architectural est crucial, car il permet aux développeurs de créer des applications réseau de haut niveau (utilisant CoAP, MQTT ou HTTP) de manière totalement agnostique vis-à-vis du matériel et des protocoles sous-jacents.
 - *Le cœur réseau (Couches 3 et 4) :* Le système gère nativement le routage IPv4 et IPv6, ainsi que les protocoles de transport TCP et UDP.
@@ -58,7 +58,7 @@ C'est précisément cette lacune que le portage de la Nanostack vient combler.
 
 La Nanostack est la pile réseau développée originellement pour Mbed OS. Mbed OS arrivant en fin de vie, la migration de cette pile logicielle vers un nouvel OS est devenue indispensable.
 
-Pour mener à bien ce portage, il est crucial d'appréhender l'architecture interne de la Nanostack. Celle-ci repose sur une séparation stricte des responsabilités, divisée en deux couches principales, animées par un moteur d'événements :
+Pour mener à bien ce portage, il est important d'appréhender l'architecture interne de la Nanostack. Celle-ci repose sur une séparation stricte des responsabilités, divisée en deux couches principales, animées par un moteur d'événements :
 
 - La *SAL* (_Socket Abstraction Layer_) : La partie purement logicielle et applicative.
 - La *HAL* (_Hardware Abstraction Layer_) : L'interface avec les composants matériels.
@@ -120,6 +120,6 @@ Le flux de réception d'une trame radio (ex: `IEEE 802.15.4`) se déroule en qua
 
 L'architecture actuelle démontre que la Nanostack n'a aucune conscience de la classe C++ `NanostackRfPhy` ni du fonctionnement interne de l'ISR de Mbed OS. Elle s'attend uniquement à ce qu'un code externe (la HAL) appelle sa fonction de rappel C (`phy_rx_cb`) et lui fournisse des événements. Dans Zephyr, il suffira de reproduire ce comportement depuis l'API `ieee802154` native.
 
-=== Conclusion de l'état de l'art
+== Conclusion de l'état de l'art
 
 L'analyse de ces différentes technologies met en évidence la pertinence du portage de la Nanostack vers Zephyr. D'un côté, le standard Wi-SUN répond parfaitement aux exigences des réseaux urbains modernes. De l'autre, Zephyr offre une base temps réel robuste, modulaire et taillée pour l'efficacité énergétique, mais manque encore d'une implémentation Wi-SUN native. L'architecture interne de la Nanostack, séparant habilement la logique réseau (SAL) des interactions matérielles (HAL), rend cette intégration réalisable. Le défi technique ne réside donc pas dans la réécriture des protocoles, mais bien dans la conception des interfaces (adaptateurs) entre la HAL de la Nanostack et les API natives de Zephyr.

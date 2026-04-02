@@ -26,10 +26,10 @@ Ce portage s'articulera autour de deux phases majeures :
     - Fork les sources de `mbed-os`
     - Fork les sources de `zephyr-os`
     - Prise en main de la hiérarchie des dossiers de la `Nanostack`
-    - Mise en évidence des différents dossier et leur utilisation
+    - Mise en évidence des différents dossiers et leur utilisation
 
 + Prise en main de Zephyr OS
-    - Installation devoid pr la toolchain
+    - Installation de la toolchain de Zephyr
     - Compiler le kernel ainsi qu'un exemple sur qemu
     - Compiler le kernel ainsi qu'un exemple sur une cible
     - Ecrire un petit programme de test 
@@ -41,23 +41,24 @@ Ce portage s'articulera autour de deux phases majeures :
     - Isoler les différents composants
 
 + Ecrire le rapport intermediaire
-    - Mettre l'avancement du projet
-    - Expliquer le fonctionnement de zephyr etc
+  - Documenter l'avancement des travaux de recherche préliminaires
+  - Rédiger une étude théorique sur les mécanismes internes de Zephyr (gestion de l'énergie, architecture réseau, etc.)
+  - Établir les choix techniques et méthodologiques pour la phase d'implémentation
 
-+ Isoler la partie "métier" de la stack est isoler les fonctions lié au kernel
-    - Copier la partie qui n'est pas relié a l'os
-    - Commencer a faire l'inventaire des fonctions a porter
++ Isoler la partie "métier" de la stack et isoler les fonctions liées au kernel
+    - Copier la partie qui n'est pas reliées à l'os
+    - Commencer à faire l'inventaire des fonctions à porter
 
 + Ecrire la HAL(Hardware Abstraction Layer)
-    - Remplacer toute les fonctions kernel appeler par la stack par des fonctions de la HAL
-    - Implementer chacune de ses fonctions pour `zephyr`
+    - Remplacer toute les fonctions kernel appelées par la stack par des fonctions de la HAL
+    - implémenter chacune de ces fonctions pour `zephyr`
     
 + Tester l'implémentation
     - Ecrire des test pour garantir le bon fonctionnement de la stack
-    - Ecrire un petit programme `zephyr` qui va permettre de faire communiquer 2 boards entre elle avec la nanostack
+    - Ecrire un petit programme `zephyr` qui va permettre de faire communiquer 2 boards entre elles avec la nanostack
 
-+ Optionel: Integrer la nanostack a l'ecosystéme reseau de `Zephyr`
-    - Porter la nanostacj de facon a ce que on appelle les socket bsd pour que ca fonctionne
++ Optionnel: Intégrer la nanostack à l'écosystème réseau de `Zephyr`
+    - Intégrer la Nanostack au sous-système réseau de Zephyr afin de permettre aux applications de communiquer via l'API standardisée des sockets BSD.
 
 + Redaction du rapport final
     - Documenter les implementations

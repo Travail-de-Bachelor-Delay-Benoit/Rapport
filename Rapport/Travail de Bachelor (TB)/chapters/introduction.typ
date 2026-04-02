@@ -28,6 +28,9 @@ table(
 
   [*Mbed TLS*], 
   [Bibliothèque de cryptographie autonome (anciennement liée à Mbed OS) fournissant les mécanismes de sécurité comme TLS et DTLS pour chiffrer les communications.],
+
+[*Smart City* (Ville intelligente)], 
+  [Ville utilisant les technologies de communication sans fil afin de mieux gérer ses ressources et ses infrastructures.],
   
 ),
 caption: [Glossaire des termes techniques]
