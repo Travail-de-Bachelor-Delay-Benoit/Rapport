@@ -31,6 +31,9 @@ table(
 
 [*Smart City* (Ville intelligente)], 
   [Ville utilisant les technologies de communication sans fil afin de mieux gérer ses ressources et ses infrastructures.],
+
+  [*IoT*], 
+  [Internet of things, l'internet des objets est le réseau connectant l'internet et les objets connectés],
   
 ),
 caption: [Glossaire des termes techniques]

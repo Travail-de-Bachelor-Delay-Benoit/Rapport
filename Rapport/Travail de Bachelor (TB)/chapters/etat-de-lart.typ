@@ -8,7 +8,7 @@ Pour garantir une communication fiable en s'affranchissant des problèmes de pro
 
 == Mbed OS <mbedos>
 
-Mbed OS est un système d'exploitation temps réel (RTOS) destiné aux systèmes embarqués. Il repose sur CMSIS-RTOS@CMSISRTOSHandbook, une couche d'abstraction fournie par Arm, qui permet aux développeurs de dialoguer avec le processeur de manière uniforme, indépendamment du fabricant du matériel. Il intègre un noyau temps réel performant ainsi qu'une gestion complète du _multithreading_.
+Mbed OS est un système d'exploitation temps réel destiné aux systèmes embarqués. Il repose sur CMSIS-RTOS@CMSISRTOSHandbook, une couche d'abstraction fournie par Arm, qui permet aux développeurs de dialoguer avec le processeur de manière uniforme, indépendamment du fabricant du matériel. Il intègre un noyau temps réel performant ainsi qu'une gestion complète du _multithreading_.
 
 Particulièrement populaire dans l'écosystème de l'IoT, Mbed OS embarque nativement un grand nombre de modules de connectivité. Il fournit des implémentations de haut niveau pour de nombreux protocoles de communication, tout en supportant un vaste catalogue de cartes de développement et de pilotes (_drivers_).
 
@@ -60,11 +60,11 @@ La Nanostack est la pile réseau développée originellement pour Mbed OS. Mbed 
 
 Pour mener à bien ce portage, il est important d'appréhender l'architecture interne de la Nanostack. Celle-ci repose sur une séparation stricte des responsabilités, divisée en deux couches principales, animées par un moteur d'événements :
 
-- La *SAL* (_Socket Abstraction Layer_) : La partie purement logicielle et applicative.
+- La *SAL* (_Software Abstraction Layer_) : La partie purement logicielle et applicative.
 - La *HAL* (_Hardware Abstraction Layer_) : L'interface avec les composants matériels.
 - Le *Nanostack Event Loop* : Le cœur asynchrone qui cadence l'ensemble des opérations.
 
-=== SAL (Socket Abstraction Layer)
+=== SAL (Software Abstraction Layer)
 
 La SAL gère toute la partie purement logicielle de la Nanostack, totalement indépendante du matériel (qui est délégué à la couche matérielle, la HAL). Son rôle principal est de masquer la complexité du réseau en offrant une interface de programmation standardisée (API Socket) à l'application. 
 
@@ -111,7 +111,7 @@ Le flux de réception d'une trame radio (ex: `IEEE 802.15.4`) se déroule en qua
 1. *L'interruption matérielle (ISR) :* Lorsque la puce radio reçoit un paquet valide, elle lève une interruption matérielle. Le noyau Mbed OS intercepte cette IRQ et exécute la routine d'interruption du pilote radio.
 2. *L'interface matérielle (`NanostackRfPhy`) :* Mbed OS utilise une classe abstraite en C++ nommée `NanostackRfPhy`. Le pilote radio spécifique à la carte (par exemple, un driver Atmel ou STM32) hérite de cette classe. C'est ce pilote qui va lire les données brutes sur le bus matériel (SPI/UART).
 3. *Le pont C/C++ et la fonction de rappel (_Callback_) :* Lors de l'initialisation du système, la classe `NanostackRfPhy` enregistre le périphérique radio auprès de la couche C de la Nanostack via l'API `arm_net_phy_register()`. Cette fonction fournit au pilote un pointeur vers une fonction de réception interne à la pile (souvent `phy_rx_cb`). Le pilote Mbed OS appelle cette fonction C en lui passant les données du paquet.
-4. *L'Event Loop dans un _Thread_ Mbed OS :* C'est ici que la magie de la Nanostack opère. La fonction de rappel ne traite pas la trame directement. Elle alloue un tampon avec `ns_dyn_mem`, y copie la charge utile, et poste un événement réseau dans le _Nanostack Event Loop_. Sous Mbed OS, cet _Event Loop_ s'exécute en continu à l'intérieur d'un _thread_ CMSIS-RTOS dédié (souvent nommé `ns_thread`). Le RTOS réveille ce _thread_, qui dépile l'événement et fait remonter le paquet de manière asynchrone vers les couches MAC, 6LoWPAN et IPv6.
+4. *L'Event Loop dans un _Thread_ Mbed OS :* La fonction de rappel ne traite pas la trame directement. Elle alloue un tampon avec `ns_dyn_mem`, y copie la charge utile, et poste un événement réseau dans le _Nanostack Event Loop_. Sous Mbed OS, cet _Event Loop_ s'exécute en continu à l'intérieur d'un _thread_ CMSIS-RTOS dédié (souvent nommé `ns_thread`). Le RTOS réveille ce _thread_, qui dépile l'événement et fait remonter le paquet de manière asynchrone vers les couches MAC, 6LoWPAN et IPv6.
 
 #figure(
   image("../image/Nanostack ISR Event-2026-03-29-224243.png"),

@@ -6,13 +6,13 @@
 
 L'essor des villes intelligentes (_Smart Cities_) rend indispensable le déploiement de réseaux capables d'interconnecter une multitude d'équipements. Ces applications imposent des contraintes réseau strictes : une densité élevée d'appareils, une couverture longue portée et une forte résilience face aux obstacles urbains. 
 
-Pour répondre aux défis de l'IoT (Internet des Objets), *Zephyr* s'est imposé comme une référence. Ce système d'exploitation temps réel (RTOS), lancé en 2016, est spécialement conçu pour les petits systèmes embarqués connectés et à faibles ressources. Il offre une connectivité avancée, de multiples API de communication et prend en charge un large éventail d'architectures 32 et 64 bits.
+Pour répondre aux défis de l'IoT , *Zephyr* s'est imposé comme une référence. Ce système d'exploitation temps réel , lancé en 2016, est spécialement conçu pour les petits systèmes embarqués connectés et à faibles ressources. Il offre une connectivité avancée, de multiples API de communication et prend en charge un large éventail d'architectures 32 et 64 bits.
 
 De son côté, la *Nanostack* est une pile de communication open source reconnue pour son intégration robuste des réseaux maillés, notamment via le protocole Wi-SUN. Cependant, elle a été historiquement développée pour le système d'exploitation Mbed OS, dont la maintenance officielle a pris fin au profit d'autres solutions.
 
 === Problématique <problematique>
 
-Mbed OS n'étant plus supporté, le projet consiste à porter la pile réseau Nanostack vers Zephyr RTOS afin de pérenniser son utilisation. L'enjeu technique principal réside dans l'adaptation de la couche d'abstraction matérielle (HAL) de la Nanostack pour qu'elle puisse interagir nativement avec l'écosystème et les pilotes matériels de Zephyr.
+Mbed OS n'étant plus supporté, le projet consiste à porter la pile réseau Nanostack vers Zephyr afin de pérenniser son utilisation. L'enjeu technique principal réside dans l'adaptation de la couche d'abstraction matérielle (HAL) de la Nanostack pour qu'elle puisse interagir nativement avec l'écosystème et les pilotes matériels de Zephyr.
 
 Ce portage s'articulera autour de deux phases majeures :
 1. *Fonctionnement autonome (_Standalone_) :* Adapter et faire tourner le cœur de la Nanostack sur Zephyr de manière indépendante, en validant les interactions de bas niveau (radio, timers, gestion mémoire).
@@ -24,11 +24,11 @@ Ce portage s'articulera autour de deux phases majeures :
 
 + Prise en main de la base de code
     - Fork les sources de `mbed-os`
-    - Fork les sources de `zephyr-os`
+    - Fork les sources de `zephyr`
     - Prise en main de la hiérarchie des dossiers de la `Nanostack`
     - Mise en évidence des différents dossiers et leur utilisation
 
-+ Prise en main de Zephyr OS
++ Prise en main de Zephyr
     - Installation de la toolchain de Zephyr
     - Compiler le kernel ainsi qu'un exemple sur qemu
     - Compiler le kernel ainsi qu'un exemple sur une cible
