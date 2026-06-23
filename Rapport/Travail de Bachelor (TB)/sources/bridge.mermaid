@@ -1,0 +1,20 @@
+graph TD
+    subgraph Nanostack ["Nanostack (Pile Réseau)"]
+        MAC[Couche MAC]
+    end
+
+    subgraph Bridge ["Couche d'adaptation (Bridge)"]
+        Tx[Flux Tx - Traduction]
+        Rx[Flux Rx - Encapsulation]
+    end
+
+    subgraph Zephyr ["Zephyr RTOS"]
+        L2[Drivers L2 - Ethernet / 802.15.4]
+        HW[Matériel / Radio / PHY]
+    end
+
+    MAC -->|Trames Formatées| Tx
+    Tx -->|Trame traduite| L2
+    L2 -->|Réception brute| Rx
+    Rx -->|Paquet encapsulé| MAC
+    L2 <--> HW

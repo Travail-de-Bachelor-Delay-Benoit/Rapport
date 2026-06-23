@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    participant NS as Nanostack (L3/MAC)
+    participant BR as bridge_l2.c
+    participant SR as Socket AF_PACKET
+    participant Z as Interface Zephyr (L2/Driver)
+
+    note over NS, Z: FLUX DE TRANSMISSION (TX)
+    NS->>BR: Appelle my_eth_data_req(dst, msdu, type)
+    activate BR
+    BR->>SR: zsock_sendto(bridge_sock, frame, len)
+    SR->>Z: Route la trame brute vers le matériel
+    deactivate BR
+    Z->>Matériel: Émission sur le réseau physique
+
+    note over NS, Z: FLUX DE RÉCEPTION (RX)
+    Matériel->>Z: Trame reçue du réseau physique
+    Z->>SR: Duplique la trame brute (Mode promiscuous)
+    Note over BR: Le thread listening_thread boucle sur zsock_recv
+    SR->>BR: Réveille zsock_recv avec les données brutes
+    activate BR
+    Note over BR: Filtrage : Si MAC Source == MAC Fake (LAA), rejette (évite le loopback)
+    BR->>NS: Appelle mac_api_ethernet.data_ind_cb(src, dst, msdu, type)
+    deactivate BR
+    NS->>NS: Traite la trame IPv6

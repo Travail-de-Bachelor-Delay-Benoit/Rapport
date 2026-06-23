@@ -34,6 +34,7 @@ table(
 
   [*IoT*], 
   [Internet of things, l'internet des objets est le réseau connectant l'internet et les objets connectés],
+  [*API*],[Application Programming Interface : Interface logicielle normalisée permettant à différents programmes de communiquer et d'échanger des données entre eux.]
   
 ),
 caption: [Glossaire des termes techniques]
@@ -49,12 +50,22 @@ Zephyr est un RTOS en plein essor, soutenu par la Linux Foundation depuis sa pre
 
 Nanostack est une pile de communication open-source intégrant le standard Wi-SUN. Actuellement, elle est étroitement liée à l'écosystème Mbed OS@MeshTutorialAPI, un système qui n'est plus maintenu depuis 2024@ImportantUpdateMbed. Ce travail de Bachelor a pour but de pallier cette obsolescence en portant la Nanostack vers Zephyr et en l'intégrant pleinement à son architecture. À terme, cette contribution permettra de déployer Zephyr dans un contexte de Smart Cities de manière entièrement open-source, tout en garantissant la pérennité de cette solution réseau.
 
-== Structure du document <structure-du-document>
+== Structure du document
 
-Ce rapport intermédiaire s'articule autour des axes suivants :
+Ce rapport de travail de Bachelor est structuré de manière à retracer l'ensemble de la démarche, depuis l'analyse initiale jusqu'à la validation technique. Il s'articule autour des chapitres suivants :
 
-- *Cahier des charges* : Définition des phases du projet et des livrables attendus.
-- *Planification initiale* : Présentation du calendrier prévisionnel et des jalons du projet.
-- *État de l'art* : Analyse des différentes technologies étudiées en vue du portage.
-- *Stratégie de portage de la Nanostack* : Détail de la méthodologie employée pour adapter les différents composants, ainsi que l'argumentaire des choix techniques réalisés.
-- *Bilan et planification actualisée* : État d'avancement des travaux au regard de la planification initiale et ajustement pour la suite du projet.
+- *Introduction* : Présentation du contexte des Smart Cities, des enjeux technologiques et de la problématique du portage de la pile réseau Nanostack.
+
+- *Cahier des charges* : Définition des objectifs techniques, du périmètre fonctionnel et des livrables du projet.
+
+- *Planification* : Organisation temporelle des travaux et calendrier prévisionnel des différentes phases de développement.
+
+- *État de l'art* : Analyse théorique du standard Wi-SUN, du noyau et de la pile réseau de Zephyr RTOS, ainsi que de l'architecture interne de la Nanostack.
+
+- *Méthodologie et architecture du portage* : Choix d'intégration en module externe (_Out-of-Tree_) et définition de la stratégie d'adaptation système.
+
+- *Implémentation* : Mise en œuvre pratique du système de build, de la HAL de compatibilité, du pool de contextes Mbed TLS et des ponts réseau L2 (Ethernet et Radio).
+
+- *Validation et tests de fonctionnement* : Campagnes de tests sur matériel réel (TI CC1352P7), mesures de latence et analyse de l'empreinte mémoire après compilation.
+
+- *Conclusion* : Bilan technique face aux objectifs initiaux, perspectives d'évolutions futures (FHSS, Socket Offloading) et planification finale effective.

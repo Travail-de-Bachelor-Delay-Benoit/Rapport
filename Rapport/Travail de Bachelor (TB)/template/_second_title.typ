@@ -29,25 +29,6 @@
     #TBresumePubliable
   ]
 
-  v(5%)
-  
-  table(
-    stroke: none,
-    columns: (40%, 30%, 30%),
-    row-gutter: 1em,
-    align: bottom,
-    [#if TBfeminineForm { "Étudiante" } else { "Étudiant" } :], [Date et lieu :], [Signature :],
-    [#TBauthor], [#hr_dotted()], [#hr_dotted()]
-  )
-  v(2%)
-  table(
-    stroke: none,
-    columns: (40%, 30%, 30%),
-    row-gutter: 1em,
-    align: bottom,
-    [#if TBsupervisorFeminineForm { "Enseignante" } else { "Enseignant" } responsable :], [Date et lieu :], [Signature :],
-    [#TBsupervisor], [#hr_dotted()], [#hr_dotted()]
-  )
   v(2%)
  
 }

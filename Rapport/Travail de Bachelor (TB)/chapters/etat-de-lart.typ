@@ -84,6 +84,7 @@ Pour réussir le portage vers Zephyr, l'implémentation de la HAL doit couvrir p
 - *L'allocation de la mémoire* : Bien que la Nanostack possède son propre gestionnaire de mémoire interne, elle doit interagir avec le noyau du RTOS hôte lors de son initialisation pour réserver son bloc de mémoire principal (via l'allocation dynamique de Zephyr ou l'assignation d'un bloc statique).
 - *La gestion de la concurrence (Multithreading)* : Mbed OS et Zephyr étant tous deux des RTOS, la HAL doit traduire les primitives de synchronisation. Il est impératif d'implémenter les mutex, les sémaphores et les sections critiques pour protéger l'état de la Nanostack contre les accès concurrents provenant de différents _threads_.
 - *Les horloges matérielles et interruptions* : La HAL doit faire le lien entre les minuteurs (_timers_) matériels gérés par Zephyr et les événements temporels de la Nanostack, tout en gérant les interruptions matérielles (par exemple, signaler à la pile logicielle qu'un paquet radio vient d'être physiquement reçu).
+- *Génération de nombres aléatoires * : La *Nanostack* requiert une source d'entropie pour garantir la non-prédictibilité des identifiants IPv6, la sécurité des clés cryptographiques et la gestion des mécanismes de _backoff_ lors des transmissions radio. La HAL expose ici le générateur de nombres aléatoires matériel  de *Zephyr* afin d'offrir une source de données sécurisée et robuste aux algorithmes de la pile.
 
 === Le moteur d'événements (_Nanostack Event Loop_)
 

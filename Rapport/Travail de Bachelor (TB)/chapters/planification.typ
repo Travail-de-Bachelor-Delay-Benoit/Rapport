@@ -1,6 +1,6 @@
 = Planification <planification>
 
-== Planification initiale <planification-initiale>
+== Planification initial <planification-initiale>
 
 #let phases = (
   (
@@ -74,7 +74,7 @@
   [*#total_heures h*], 
   [*100%*]
 )
-== Diagramme de Gantt initiale <diagramme-gantt-initiale>
+== Diagramme de Gantt initial <diagramme-gantt-initiale>
 
 #figure(
   image("../image/gantt_initiale.svg"),

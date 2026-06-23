@@ -1,0 +1,36 @@
+---
+id: 70bc47b0-4168-4a3c-b0b9-ac11bdc3f9b2
+---
+gantt
+    title Planification Réelle (Base: 26h/semaine) - Démarrage 16 fév 2026
+    dateFormat  YYYY-MM-DD
+    axisFormat %m-%d
+    weekday monday
+    todayMarker off
+    tickInterval 1week
+
+    section Analyse
+    1. Base de code (20h)                  :p1, 2026-02-16, 1w
+    2. Prise en main Zephyr (40h)          :p2, after p1, 11d
+    3. Étude comparative (50h)             :p3, after p2, 13d
+
+    section Rapport Intermédiaire
+    4. Rédaction rapport interm. (20h)     :p4, 2026-03-16, 1w
+    Jalon Rendu Rapport Interm.            :milestone, m1, 2026-04-02, 0d
+
+    section Documentation
+    Prise de note et documentation         :pnote, 2026-02-16, 2026-06-23
+
+    section Implémentation
+    5. Isolation métier/kernel (10h)       :p5, after p3, 3d
+    6. Création de la HAL (180h)           :p6, after p5, 7w
+
+    section Tests
+    7. Phase de tests (95h)                :p7, after p6, 26d
+
+    section Intégration (Optionnel)
+    8. Intégration (5h)                    :p8, after p7, 1d
+
+    section Rapport Final
+    9. Rapport final (30h)                 :p9, after p8, 14d
+    Rendu Rapport Final                    :milestone, m2, 2026-06-23, 0d

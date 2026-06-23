@@ -1,0 +1,10 @@
+---
+id: 7a1b0f42-b242-444a-9ecb-8627b8d0270f
+---
+graph LR
+    User[Fichier prj.conf / menuconfig] --> Kconfig[Kconfig / Kbuild]
+    Kconfig --> CMake[CMakeLists.txt maître]
+    
+    CMake -->|Option par défaut| Eth[Compilation: Pont Ethernet]
+    CMake -->|Option NANOSTACK_BRIDGE_RADIO| Radio[Compilation: Pont AF_PACKET]
+    CMake -->|Option NANOSTACK_BRIDGE_RADIO_DIRECT| RadioDir[Compilation: Pont Direct]

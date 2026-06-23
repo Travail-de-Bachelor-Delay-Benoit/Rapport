@@ -19,9 +19,10 @@
 
 == Intégration logicielle : Bibliothèque vs Module Zephyr
 
-Lors du portage d'une base de code aussi volumineuse que la Nanostack, la méthode d'intégration au système de compilation est un choix d'architecture critique. Zephyr propose deux approches principales pour inclure du code tiers : l'intégration en tant que bibliothèque statique au sein de l'application, ou la création d'un Module Zephyr externe @ModulesExternalProjects.
+Lors du portage d'une base de code aussi volumineuse que la Nanostack, la méthode d'intégration au système de compilation est un choix d'architecture critique. Zephyr propose deux approches principales pour inclure du code tiers : l'intégration en tant que bibliothèque statique au sein de l'application, ou la création d'un Module Zephyr externe @ModulesExternalProjects
+.
 
-=== L'approche Bibliothèque classique
+=== L'approche Bibliothèque classique (_In-Tree_)
 Cette méthode consisterait à copier l'intégralité des fichiers sources de la Nanostack directement dans le dossier de l'application finale, et à configurer le fichier `CMakeLists.txt` de l'application pour les compiler. 
 - *Avantage :* Mise en place initiale très rapide.
 - *Inconvénient :* Cette approche lie fortement la pile réseau à l'application métier. Elle rend la mise à jour de la Nanostack difficile, pollue l'historique de version (Git) du projet principal et rend la réutilisation de la pile par d'autres projets quasiment impossible.
@@ -80,7 +81,7 @@ Afin de justifier le choix de l'architecture logicielle, le tableau suivant dres
 ) <tab_comparaison_modules>
 
 === Décision architecturale et Manifeste `west`
-Pour ce projet de Bachelor, *l'approche par Module Zephyr est retenue*. Elle est la seule à garantir une architecture logicielle pérenne. Le choix de cette architecture en module externe (_Out-of-Tree_) implique l'utilisation avancée du système de manifeste.
+Pour ce projet de Bachelor, l'approche par Module *Zephyr* est retenue. Elle est la seule à garantir une architecture logicielle pérenne. Le choix de cette architecture en module externe (_Out-of-Tree_) implique l'utilisation avancée du système de manifeste.
 
 L'application finale contiendra un fichier `west.yml`. Lors de l'initialisation de l'environnement (via la commande `west update`), l'outil se chargera de cloner le dépôt de la Nanostack, de l'insérer dans l'espace de travail (_workspace_), et de parser son fichier `zephyr/module.yml` pour lier ses menus et scripts de compilation au système principal.
 
@@ -97,7 +98,7 @@ La topologie classique du module développé pour ce portage est la suivante :
       zephyr-nanostack/
       ├── zephyr/
       │   └── module.yml       <-- Déclaration du module pour west
-      ├── include/             <-- En-têtes publics (API de la Nanostack)
+      ├── include/             <-- En-têtes publiques (API de la Nanostack)
       ├── src/                 <-- Code source C (event_loop, adaptateurs...)
       ├── CMakeLists.txt       <-- Règles de compilation Zephyr
       └── Kconfig              <-- Options d'activation pour le menuconfig
@@ -157,7 +158,7 @@ Le standard Wi-SUN impose des exigences de sécurité strictes, nécessitant l'a
 
 Cette dépendance s'intègre parfaitement à la stratégie de portage puisque Zephyr utilise également Mbed TLS comme bibliothèque cryptographique officielle par défaut. Le portage ne nécessitera donc pas de réécrire les algorithmes de sécurité. Il consistera principalement à s'assurer que le système de compilation du module (via `CMake` et `Kconfig`) force l'activation de Mbed TLS (`CONFIG_MBEDTLS=y`). 
 
-De plus, une attention particulière devra être portée sur l'entropie matérielle. Pour générer des clés cryptographiques robustes, la pile devra être correctement interfacée avec le générateur de nombres aléatoires matériel (_True Random Number Generator_ - TRNG) exposé par les API de Zephyr.
+De plus, une attention particulière devra être portée sur l'entropie matérielle. Pour générer des clés cryptographiques robustes, la pile devra être correctement interfacée avec le générateur de nombres aléatoires matériel exposé par les API de Zephyr.
 
 == Refonte des règles de compilation (CMakeLists)
 
