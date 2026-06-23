@@ -1,0 +1,4 @@
+west:
+  command: /home/karilla/Cours/TB/env/bin/west build -b stm32f769i_disco --pristine
+  topdir: /home/karilla/Cours/TB/zephyr-first-step
+  version: 1.5.0

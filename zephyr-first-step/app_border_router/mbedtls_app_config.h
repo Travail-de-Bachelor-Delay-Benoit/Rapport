@@ -1,0 +1,4 @@
+#ifndef MBEDTLS_APP_CONFIG_H
+#define MBEDTLS_APP_CONFIG_H
+
+#endif /* MBEDTLS_APP_CONFIG_H */

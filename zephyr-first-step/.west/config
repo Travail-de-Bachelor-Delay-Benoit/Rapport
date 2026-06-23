@@ -1,0 +1,11 @@
+[manifest]
+path = zephyr
+file = west.yml
+
+[zephyr]
+base = zephyr
+
+[runner]
+openocd.exe = /home/karilla/Dev/openocd/src/openocd
+openocd.args = --search /home/karilla/Dev/openocd/tcl
+

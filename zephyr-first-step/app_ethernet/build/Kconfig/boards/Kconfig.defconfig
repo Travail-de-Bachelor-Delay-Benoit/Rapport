@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/st/stm32f769i_disco/Kconfig.defconfig"

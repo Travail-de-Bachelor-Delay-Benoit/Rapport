@@ -1,0 +1,29 @@
+empty_file.o: \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/misc/empty_file.c \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/cc1352p7_lp.dts \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm/ti/cc1352r7.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/common/mem.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm/ti/cc13xx_cc26xx.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm/armv7-m.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/common/skeleton.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/adc/adc.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/dt-util.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_macro.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_internal.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_loops.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_listify.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_internal_is_eq.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_internal_util_inc.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_internal_util_dec.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/sys/util_internal_util_x2.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/i2c/i2c.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/gpio/gpio.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/../common/launchxl.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/../common/boosterpack_connector.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/../common/launchxl-pinctrl.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/pinctrl/cc13xx_cc26xx-pinctrl.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/../common/launchxl-flash-p7.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/../common/launchxl_sky13317.dtsi \
+ /home/karilla/Cours/TB/zephyr-first-step/app_border_router/app.overlay

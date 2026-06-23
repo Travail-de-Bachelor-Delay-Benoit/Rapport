@@ -1,0 +1,61 @@
+cmake:
+  application:
+    configuration-dir: '/home/karilla/Cours/TB/zephyr-first-step/app_border_router'
+    source-dir: '/home/karilla/Cours/TB/zephyr-first-step/app_border_router'
+  board:
+    name: 'cc1352p7_lp'
+    path:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad'
+    qualifiers: 'cc1352p7'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/bindings'
+    files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/cc1352p7_lp.dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/app_border_router/app.overlay'
+    include-dirs:
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/ambiq/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/atmel/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/bouffalolab/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/bouffalolab/include/zephyr'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/gigadevice/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/microchip/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/microchip/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/nuvoton/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/nxp/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/stm32/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/ti/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/common'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/vendor'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/rx'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/x86'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/xtensa'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/sparc'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/riscv'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/posix'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm64'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arc'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts'
+    user-files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/app_border_router/app.overlay'
+  kconfig:
+    files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/ti/cc1352p7_launchpad/cc1352p7_lp_defconfig'
+     - '/home/karilla/Cours/TB/zephyr-first-step/app_border_router/prj.conf'
+    user-files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/app_border_router/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/karilla/zephyr-sdk-1.0.0'
+  zephyr:
+    version: '4.4.0-rc1'
+    zephyr-base: '/home/karilla/Cours/TB/zephyr-first-step/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/karilla/Cours/TB/env/bin/west build -b cc1352p7_lp --pristine'
+  topdir: '/home/karilla/Cours/TB/zephyr-first-step'
+  version: '1.5.0'

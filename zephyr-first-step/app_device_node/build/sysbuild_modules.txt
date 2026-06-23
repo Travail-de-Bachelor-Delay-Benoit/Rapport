@@ -1,0 +1,1 @@
+"mcuboot":"/home/karilla/Cours/TB/zephyr-first-step/bootloader/mcuboot":"/home/karilla/Cours/TB/zephyr-first-step/bootloader/mcuboot/boot/zephyr/sysbuild"

@@ -1,0 +1,58 @@
+cmake:
+  application:
+    configuration-dir: '/home/karilla/Cours/TB/zephyr-first-step/app_ethernet'
+    source-dir: '/home/karilla/Cours/TB/zephyr-first-step/app_ethernet'
+  board:
+    name: 'stm32f769i_disco'
+    path:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/st/stm32f769i_disco'
+    qualifiers: 'stm32f769xx'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/bindings'
+    files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/st/stm32f769i_disco/stm32f769i_disco.dts'
+    include-dirs:
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/ambiq/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/atmel/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/bouffalolab/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/bouffalolab/include/zephyr'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/gigadevice/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/microchip/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/microchip/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/nuvoton/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/nxp/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/stm32/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/modules/hal/ti/dts'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/include'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/include/zephyr'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/common'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/vendor'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/rx'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/x86'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/xtensa'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/sparc'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/riscv'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/posix'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm64'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arm'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts/arc'
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/dts'
+  kconfig:
+    files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/zephyr/boards/st/stm32f769i_disco/stm32f769i_disco_defconfig'
+     - '/home/karilla/Cours/TB/zephyr-first-step/app_ethernet/prj.conf'
+    user-files:
+     - '/home/karilla/Cours/TB/zephyr-first-step/app_ethernet/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/karilla/zephyr-sdk-1.0.0'
+  zephyr:
+    version: '4.4.0-rc1'
+    zephyr-base: '/home/karilla/Cours/TB/zephyr-first-step/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/karilla/Cours/TB/env/bin/west build -b stm32f769i_disco --pristine'
+  topdir: '/home/karilla/Cours/TB/zephyr-first-step'
+  version: '1.5.0'
